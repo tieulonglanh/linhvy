@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UA4PUVRVGwEHU1ZaBgc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e){function n(t,e,n){n||(n={});for(var r=o[t],a=r&&r.length||0,s=n[i]||(n[i]={}),u=0;a>u;u++)r[u].apply(s,e);return s}function r(t,e){var n=o[t]||(o[t]=[]);n.push(e)}var o={},i="nr@context";e.exports={on:r,emit:n}},{}],2:[function(t){function e(t,e,n,i,s){return u?u-=1:r("err",[s||new UncaughtException(t,e,n)]),"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t(5),a=window.onerror,s=!1,u=0;t("loader").features.push("err"),window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(d){"stack"in d&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(4),s=!0)}i.on("fn-start",function(){s&&(u+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&u>0&&(u-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:4,3:3,4:6,5:1,6:14,handle:"D5DuLP",loader:"G9z0Bl"}],3:[function(t){function e(t){r.inPlace(t,["addEventListener","removeEventListener"],"-",n)}function n(t){return t[1]}var r=t(1),o=(t(3),t(2));if(e(window),"getPrototypeOf"in Object){for(var i=document;i&&!i.hasOwnProperty("addEventListener");)i=Object.getPrototypeOf(i);i&&e(i);for(var a=XMLHttpRequest.prototype;a&&!a.hasOwnProperty("addEventListener");)a=Object.getPrototypeOf(a);a&&e(a)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&e(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=e["nr@wrapped"]?t[1]=e["nr@wrapped"]:e["nr@wrapped"]=t[1]=r(e,"fn-"):"function"==typeof e.handleEvent&&r.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:15,2:1,3:14}],4:[function(t){var e=(t(3),t(1)),n=t(2);e.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=e(t[0],"fn-")})},{1:15,2:1,3:14}],5:[function(t){function e(t){var e=t[0];"string"==typeof e&&(e=new Function(e)),t[0]=n(e,"fn-")}var n=(t(3),t(1)),r=t(2);n.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",e)},{1:15,2:1,3:14}],6:[function(t){function e(){o.inPlace(this,s,"fn-")}function n(t,e){o.inPlace(e,["onreadystatechange"],"fn-")}function r(t,e){return e}var o=t(1),i=t(2),a=window.XMLHttpRequest,s=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];window.XMLHttpRequest=function(t){var n=new a(t);try{i.emit("new-xhr",[],n),o.inPlace(n,["addEventListener","removeEventListener"],"-",function(t,e){return e}),n.addEventListener("readystatechange",e,!1)}catch(r){try{i.emit("internal-error",r)}catch(s){}}return n},window.XMLHttpRequest.prototype=a.prototype,o.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:15,2:1}],7:[function(t){function e(){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;u>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,d="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(d);if(f&&(r.rxSize=f),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}t("loader").features.push("xhr");var o=t("handle"),i=t(1),a=t(5),s=["load","error","abort","timeout"],u=s.length,d=t(2);t(3),t(4),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var d=e(o);d&&(r.txSize=d)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",e)}catch(r){}}};for(var f=0;u>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&e()},{1:8,2:11,3:3,4:6,5:1,handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e){var n=r[t];return n?n.apply(this,e):(o[t]||(o[t]=[]),void o[t].push(e))}var r={},o={};e.exports=n,n.queues=o,n.handlers=r},{}],11:[function(t,e){function n(t){if(!t||"object"!=typeof t&&"function"!=typeof t)return-1;if(t===window)return 0;if(o.call(t,"__nr"))return t.__nr;try{return Object.defineProperty(t,"__nr",{value:r,writable:!0,enumerable:!1}),r}catch(e){return t.__nr=r,r}finally{r+=1}}var r=1,o=Object.prototype.hasOwnProperty;e.exports=n},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&u&&u.body){p.proto="https"===c.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=p.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,u=s.document,d="addEventListener",f="attachEvent",c=(""+location).split("?")[0],p=e.exports={offset:i(),origin:c,features:[]};u[d]?(u[d]("DOMContentLoaded",o,!1),s[d]("load",n,!1)):(u[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],14:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],15:[function(t,e){function n(t,e,r,s){function nrWrapper(){try{var n,a=u(arguments),d=this,f=r&&r(a,d)||{}}catch(c){i([c,"",[a,d,s],f])}o(e+"start",[a,d,s],f);try{return n=t.apply(d,a)}catch(p){throw o(e+"err",[a,d,p],f),p}finally{o(e+"end",[a,d,n],f)}}return a(t)?t:(e||(e=""),nrWrapper[n.flag]=!0,nrWrapper)}function r(t,e,r,o){r||(r="");var i,s,u,d="-"===r.charAt(0);for(u=0;u<e.length;u++)s=e[u],i=t[s],a(i)||(t[s]=n(i,d?s+r:r,o,s,t))}function o(t,e,n){try{s.emit(t,e,n)}catch(r){i([r,t,e,n])}}function i(t){try{s.emit("internal-error",t)}catch(e){}}function a(t){return!(t&&"function"==typeof t&&t.apply&&!t[n.flag])}var s=t(1),u=t(2);e.exports=n,n.inPlace=r,n.flag="nr@wrapper"},{1:1,2:14}]},{},["G9z0Bl",2,7]);</script>
+      <title>Page Not Found | Clipper Teas</title>
+      <meta name="description" content="">
+
+      <meta name="viewport" content="width=1200">
+
+              <link href="http://www.clipper-teas.com/content/themes/clipper_teas/stylesheets/screen.1403171006.css" media="screen, projection" rel="stylesheet" type="text/css" />
+            <link href="http://www.clipper-teas.com/content/themes/clipper_teas/css/jquery.jscrollpane.css" media="screen, projection" rel="stylesheet" type="text/css" />
+      <link href="http://www.clipper-teas.com/content/themes/clipper_teas/tea-guys-assets/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
+            <link href="http://www.clipper-teas.com/content/themes/clipper_teas/css/ui/smoothness/jquery-ui-1.10.4.custom.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+      
+      <script src="http://www.clipper-teas.com/content/themes/clipper_teas/javascripts/vendor/modernizr-2.6.2.min.js"></script>
+      <link rel="shortcut icon" href="http://www.clipper-teas.com/content/themes/clipper_teas/images/favicon.ico"/>
+
+      <link rel="pingback" href="http://www.clipper-teas.com/wp/xmlrpc.php" />
+
+      <link rel="alternate" hreflang="en" href="http://www.clipper-teas.com/" />
+      <link rel="alternate" hreflang="de" href="http://www.cupper-teas.de/" />
+      <link rel="alternate" hreflang="fr" href="http://www.clipper-teas.fr/" />
+      <link rel="alternate" hreflang="nl" href="http://clipper-teas.nl/" />
+      <link rel="alternate" hreflang="jp" href="http://clipper-teas.jp/" />
+
+      <meta name="google-site-verification" content="WjyWGXPK5acSWldTHCC7vmSP9Gldb-A4ahmZPiusIt0" />
+<meta name="msvalidate.01" content="C603234FFD33F23A25F70E37837CB607" />
+
+      
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.5.2.8 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="object" />
+<meta property="og:title" content="Page Not Found - Clipper Teas" />
+<meta property="og:site_name" content="Clipper Teas" />
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel='stylesheet' id='cp_cookie-popup_css-css'  href='http://www.clipper-teas.com/content/plugins/cookie-popup/cookie-popup.css?ver=3.9.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='wp-paginate-css'  href='http://www.clipper-teas.com/content/themes/clipper_teas/wp-paginate.css?ver=1.2.4' type='text/css' media='screen' />
+<script type='text/javascript' src='http://www.clipper-teas.com/wp/wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
+<script type='text/javascript' src='http://www.clipper-teas.com/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://www.clipper-teas.com/content/plugins/anti-spam/js/anti-spam.js?ver=2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var cp_data = {"ajax_url":"http:\/\/www.clipper-teas.com\/wp\/wp-admin\/admin-ajax.php","ajax_action":"cp_html"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.clipper-teas.com/content/plugins/cookie-popup/cookie-popup.js?ver=3.9.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.clipper-teas.com/wp/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.clipper-teas.com/wp/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.9.1" />
+  </head>
+  <body class="error404">
+    <div id="fb-root"></div>
+    <div id="main">
+      <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<div class="header">
+  <div class="wrapper">
+      <header class="nav">
+        <a class="ir logo" href="/" title="Clipper - Natural, Fair, Delicious">Clipper - Natural, Fair, Delicious</a>
+        <nav>
+  <ul class="utility clearfix">
+    <li class="search-button">
+      <a class="search" href="#">Search</a>
+      <div class="search-form">
+        <form method="get" id="searchform" action="http://www.clipper-teas.com/">
+<input type="text" size="100" name="s" id="s" autocomplete="off" value="Enter your text here..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"/>
+<input type="submit" id="searchsubmit" value="GO" class="search-btn" />
+</form>      </div>
+    </li>
+    <li>
+      <a href="#">Get in touch</a>
+      <ul>
+        <li><a href="/get-in-touch/contact-us/">Contact Us</a></li>
+        <li><a href="/frequently-asked-questions/">FAQs</a></li>
+        <li><a href="/get-in-touch/where-to-buy/">Where to Buy</a></li>
+        <li><a class="newsletter-sign-up" href="#">Sign up to Our Newsletter</a></li>
+        <li><a href="/press/">Press</a></li>
+        <li><a class="tell-a-friend" href="#">Tell a Friend</a></li>
+        <li><a href="/get-in-touch/trade-enquiries/">Trade Enquiries</a></li>
+        <li><a href="/get-in-touch/international/">International</a></li>
+        <li><a class="newsletter-unsubscribe" href="#">Unsubscribe</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="/frequently-asked-questions/">FAQs</a>
+    </li>
+    <li class="last-child">
+      <a href="#">Trade</a>
+      <ul>
+        <li><a href="/reasons-to-love-clipper/">Reasons to Love Clipper</a></li>
+        <li><a href="/become-a-stockist/">Become a Stockist</a></li>
+        <li><a href="/reasons-to-love-clipper/our-cafe-range/">Cafe</a></li>
+        <li><a href="/reasons-to-love-clipper/our-hotel-range/">Hotel</a></li>
+        <li><a href="/reasons-to-love-clipper/our-workplace-range/">Workplace</a></li>
+        <li><a href="/retailer-club/">Retailer Club</a></li>
+        <li><a href="/get-in-touch/international/">International</a></li>
+        <!-- <li><a href="#">Afternoon tea</a></li> -->
+        <!-- <li><a href="#">Do not disturb</a></li> -->
+        <!-- <li><a href="#">Working up a thirst</a></li> -->
+        <!-- <li><a href="#">Clipper stockists</a></li> -->
+      </ul>
+    </li>
+  </ul>
+</nav>
+<a class="ir our-blog" href="/our-blog/">Our Blog</a>
+<ul class="social clearfix">  
+  <li><a class="ir fb external" href="http://www.facebook.com/pages/Clipper-Tea-Revival-Time/172392210758">Facebook</a></li>
+  <li><a class="ir twitter external" href="http://twitter.com/clipperteas">Twitter</a></li>
+  <li><a class="ir pinterest external" href="https://pinterest.com/clipperteas/">Pinterest</a></li>
+  <li class="last-child"><a class="ir youtube external" href="http://www.youtube.com/clipperteas">YouTube</a></li>
+</ul>
+        <nav>
+  <ul class="primary clearfix">
+    <li >
+      <a class="our-story" href="/our-story/">Our Story</a>
+      <ul>
+  <li><a href="/our-story/who-we-are/">Who We Are</a></li>
+  <li><a href="/our-story/our-tea-guys/">Our Tea Guys</a></li>
+  <li><a href="/our-story/our-fairtrade-story/">Our Fairtrade Story</a></li>
+</ul>
+    </li>
+    <li >
+      <a class="our-drinks" href="/our-drinks/">Our Drinks</a>
+      <ul class="od-dropdown">
+    <li>
+        <div class="frame">
+            <a href="/our-drinks/everyday-tea/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/teas/nav_everyday.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/everyday-tea/">Everyday Tea</a>
+    </li>
+    <li>
+        <div class="frame">
+            <a href="/our-drinks/green-tea/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/teas/nav_green_tea.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/green-tea/">Green Tea</a>
+    </li>
+    <li>
+        <div class="frame">
+            <a href="/our-drinks/infusions/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/teas/nav_infusions2.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/infusions/">Infusions</a>
+    </li>
+    <li class="last">
+        <div class="frame">
+            <a href="/our-drinks/fuso-tea-tents/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/our_drinks/fuso-nav.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/fuso-tea-tents/">Fuso Tea Tents</a>
+    </li>
+    <li>
+        <div class="frame">
+            <a href="/our-drinks/white-tea/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/teas/nav_white_tea.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/white-tea/">White Tea</a>
+    </li>
+    <li>
+        <div class="frame">
+            <a href="/our-drinks/speciality-tea/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/teas/nav_speciality.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/speciality-tea/">Speciality</a>
+    </li>
+    <li>
+        <div class="frame">
+            <a href="/our-drinks/hot-chocolate/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/teas/nav_hot_chocolate.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/hot-chocolate/">Hot Chocolate</a>
+    </li>
+    <li class="last">
+        <div class="frame">
+            <a href="/our-drinks/coffee/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/teas/nav_coffee.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/our-drinks/coffee/">Coffee</a>
+    </li>
+    <div class="h3">Discover Our Drinks</div>
+</ul>    </li>
+    <li >
+      <a class="whats-brewing" href="/whats-brewing/">What's Brewing</a>
+      <ul class="wb-dropdown">
+  <li><a href="/ditchtheoldbag/">Ditch The Old Bag</a></li>
+  <li style="display: none;"><a href="/afternoon-tea-parties/">Afternoon Tea Parties</a></li>
+  <li><a href="/teapottour/">Teapot Tour</a></li>
+  <li><a href="/our-blog/">Our Blog – Tales Around the Teapot</a></li>
+  <li><a href="/whats-brewing/special-offers/">Special Offers</a></li>
+  <li><a href="http://www.facebook.com/pages/Clipper-Tea-Revival-Time/172392210758" class="external">Facebook</a></li>
+  <li><a href="http://twitter.com/clipperteas" class="external">Twitter</a></li>
+  <li><a href="https://pinterest.com/clipperteas/" class="external">Pinterest</a></li>
+  <li><a href="http://www.youtube.com/clipperteas" class="external">YouTube</a></li>
+</ul>
+    </li>
+    <li >
+      <a class="win-things" href="/win-things/game-competition/">Win Things</a>
+      <ul class="wt-dropdown">
+    <li>
+        <div class="frame">
+            <a href="/win-things/game-competition/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/win_things/nav_spot_the_pot.jpg" alt="" width="164" height="106"></a>
+        </div>
+        <a href="/win-things/game-competition/">Tea Cup Carousel Game</a>
+    </li>
+  <li>
+    <div class="frame">
+      <a href="/magical/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/win_things/dropdown.jpg" alt="" width="164" height="106"></a>
+    </div>
+    <a href="/magical/">Win 1 of 100,000 <br> Magical Prizes</a>
+  </li>
+  <li>
+    <div class="frame">
+      <a href="/win-things/cup-collector/"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/win_things/nav_clipper_cups.jpg" alt="" width="164" height="106"></a>
+    </div>
+    <a href="/win-things/cup-collector/">Win 1 of <br>10,000 cups</a>
+  </li>
+  <div class="h3">Win Lovely Stuff</div>
+</ul>
+    </li>
+    <li class="last-child">
+      <a class="shop external" href="http://www.clipperteashop.com/">Shop</a>
+      <ul class="shop-dropdown">
+  <li><a class="external" href="http://www.clipperteashop.com/">Our Online Shop</a></li>
+  <li><a href="/index.php/get-in-touch/where-to-buy/">Where to Buy</a></li>
+  <li><a href="/index.php/reasons-to-love-clipper/">Trade</a></li>
+</ul>
+    </li>
+  </ul>
+</nav>
+      </header>
+  </div>
+  <div class="banner">
+  <ul class="carousel">
+      </ul>
+  <div class="wrapper">
+    <div class="controls">
+      <a class="prev ir" href="#">&lt;</a>
+      <a class="next ir" href="#">&gt;</a>
+    </div>
+    <ul class="progress">
+      <li class="active"><a class="ir" href="#">1</a></li>
+      <li><a class="ir" href="#">2</a></li>
+      <li><a class="ir" href="#">3</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="tear"></div>
+</div>
+      <div class="clouds">
+        <div class="content wrapper">
+          <div class="vine"></div>
+  <h1>Page not found</h1>
+  <p>Sorry, the page you asked for couldn’t be found.</p>
+        </div>
+        <div id="main-ft"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <footer class="wrapper">
+        <div class="share">
+  <a class="ir pin-it" href="//pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">Pin It</a>
+  <a class="ir mail tell-a-friend" href="mailto:?subject=Clipper%20Teas&amp;body=http://www.clipper-teas.com/content/themes/clipper_teas/css/ui/smoothness/jquery-ui-1.10.4.custom.min.css">Mail</a>
+  <a class="ir facebook" href="http://www.clipper-teas.com/content/themes/clipper_teas/css/ui/smoothness/jquery-ui-1.10.4.custom.min.css">Facebook</a>
+  <a class="ir twitter" href="https://twitter.com/intent/tweet?url=http://www.clipper-teas.com/content/themes/clipper_teas/css/ui/smoothness/jquery-ui-1.10.4.custom.min.css">Twitter</a>
+</div>
+<div class="follow">
+  <a class="youtube ir external" href="http://www.youtube.com/clipperteas">YouTube</a>
+  <a class="pinterest ir external" href="https://pinterest.com/clipperteas/">Pinterest</a>
+  <a class="twitter ir external" href="http://twitter.com/clipperteas">Twitter</a>
+  <a class="fb ir external" href="http://www.facebook.com/pages/Clipper-Tea-Revival-Time/172392210758">Facebook</a>
+</div>
+<nav>
+  <h4>General</h4>
+  <ul>
+    <li><a href="/">&gt; Home</a></li>
+    <li><a href="/our-story/">&gt; Our Story</a></li>
+    <li><a href="/get-in-touch/contact-us/">&gt; Contact Us</a></li>
+    <li><a href="/win-things/game-competition/">&gt; Win Things</a></li>
+    <li><a href="/reasons-to-love-clipper/">&gt; Trade</a></li>
+    <li><a href="/our-story/our-fairtrade-story/">&gt; Fairtrade</a></li>
+    <li><a href="/sitemap/">&gt; Sitemap</a></li>
+  </ul>
+</nav>
+<nav>
+  <h4>Our Drinks</h4>
+  <ul>
+    <li><a href="/our-drinks/everyday-tea/">&gt; Everyday Tea</a></li>
+    <li><a href="/our-drinks/green-tea/">&gt; Green Tea</a></li>
+    <li><a href="/our-drinks/white-tea/">&gt; White Tea</a></li>
+    <li><a href="/our-drinks/infusions/">&gt; Infusions</a></li>
+    <li><a href="/our-drinks/speciality/">&gt; Speciality</a></li>
+    <li><a href="/our-drinks/hot-chocolate/">&gt; Hot Chocolate</a></li>
+    <li><a href="/our-drinks/coffee/">&gt; Coffee</a></li>
+  </ul>
+</nav>
+<nav class="shopping">
+  <h4>Shopping</h4>
+  <ul>
+    <li><a href="/get-in-touch/where-to-buy/">&gt; Where to Buy</a></li>
+    <li><a class="external" href="https://shop.clipper-teas.com/customer/account/login/">&gt; Account</a></li>
+  </ul>
+</nav>
+<div class="sign-up">
+  <h4>Sign Up</h4>
+  <p class="p4 sign-up-feedback">If you would like to hear from us and find out what we’re up to, be the first to discover our special offers, magical tea time prizes and occasionally get the chance to receive a free sample then just fill out you email address below...</p>
+  <p class="p4 sign-up-feedback visuallyhidden">Thank you for signing up to receive all our latest news and special offers.<br /></p>
+  <form action="http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php" method="post" id="short-sign-up" class="sign-up validate short-sign-up">
+    <div>
+      <input type="email" name="email" placeholder="Your email address..." required>
+      <input type="hidden" name="action" value="newsletter_sign_up">
+      <input type="submit" name="submit" style="display: none;">
+      <a href="#" class="ir submit">Submit</a>
+    </div>
+  </form>
+</div>
+        <div class="itnl p4">
+          International Sites: &nbsp;
+          <a href="http://www.clipper-teas.fr/" class="ir france external">France</a>
+          <a href="http://www.cupper-teas.de/" class="ir germany external">Germany</a>
+          <a href="http://www.clipper-teas.jp/" class="ir japan external">Japan</a>
+            <a href="http://www.clipper-teas.nl/" class="ir netherlands external">Netherlands</a>
+        </div>
+        <ul class="affil">
+          <li><a href="http://www.soilassociation.org/" class="ir soil-assoc external">Soil Association</a></li>
+          <li><a href="http://www.fairtrade.org.uk/" class="ir fairtrade external">Fairtrade</a></li>
+        </ul>
+        <ul class="sub">
+          <li><a href="/privacy/">Privacy</a></li>
+          <li class="last-child"><a href="/t-and-c/">Terms &amp; Conditions</a></li>
+          <!-- <li><a href="#">Site Map</a></li> -->
+          <!--<li class="last-child"><a href="/privacy/">Cookie Policy</a></li>-->
+        </ul>
+        <p class="copyright p4">© Copyright 2014 Clipper Teas</p>
+        <p class="design p4">Site Design: <a href="http://www.madriver.co.uk/" class="external">Mad River</a></p>
+      </footer>
+    </div>
+    <div id="async-scripts"></div>
+    <!-- Data -->
+<script>
+  var Application = window.Application||{};
+  Application.channelUrl = 'http://www.clipper-teas.com/channel.html';
+  Application.stylesheetDir = 'http://www.clipper-teas.com/content/themes/clipper_teas';
+
+  //GA
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21720401-1']);
+  _gaq.push(['_trackPageview']);
+</script>
+
+<script type="text/javascript">
+    var wp_data = {
+        ajax_url: "http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php"
+    }
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://www.clipper-teas.com/content/themes/clipper_teas/javascripts/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/javascripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/javascripts/game/swfobject.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        jQuery(".modal").on("click", ".ir.minus", function() {
+            var _inputs = $(".modal .friend-input div");
+            if(_inputs.length > 1) {
+                _inputs.last().remove();
+            }
+        });
+
+        jQuery(".modal").on("click", ".ir.plus", function() {
+            var _new_input = $(".modal .friend-input div").eq(0).clone();
+            _new_input.find('input').val('');
+            $(".modal .friend-input").append(_new_input);
+        });
+    });
+</script>
+
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/tea-guys-assets/js/selectric.js"></script>
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/tea-guys-assets/js/jquery.fancybox.js"></script>
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/tea-guys-assets/js/jquery.dotdotdot.min.js"></script>
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/tea-guys-assets/js/common.js"></script>
+
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/js/plugins.js"></script>
+<script src="http://www.clipper-teas.com/content/themes/clipper_teas/js/global.js"></script>
+
+  <script src="http://www.clipper-teas.com/content/themes/clipper_teas/javascripts/game/gameapi.0.2.1403171006.js"></script>
+
+  <script src="http://www.clipper-teas.com/content/themes/clipper_teas/javascripts/build/scripts.min.1403171006.js"></script>
+
+  <script src="/v5/game.js"></script>
+
+
+  
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Social/Tracking async loads -->
+<script>
+  (function(d, s, div) {
+    //Twitter
+    var f = d.createElement(s); f.async = true; f.type = 'text/javascript';
+    f.src = '//platform.twitter.com/widgets.js';
+    d.getElementById(div).appendChild(f);
+
+    //Pinterest
+    f = d.createElement(s); f.async = true; f.type = 'text/javascript';
+    f.src = '//assets.pinterest.com/js/pinit.js';
+    d.getElementById(div).appendChild(f);
+
+    //Facebook
+    var fbid = 'facebook-jssdk';
+    if (!d.getElementById(fbid)) {
+      f = d.createElement(s); f.id = fbid;
+      f.src = "//connect.facebook.net/en_US/all.js";
+      d.getElementById(div).appendChild(f);
+    };
+
+    //GA
+    var ga = d.createElement(s); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    d.getElementById(div).appendChild(ga);
+
+  }(document, 'script', 'async-scripts'));
+
+</script><div class="modal modal-bg"></div>
+
+<div class="modal modal-wrapper">
+  <div class="modal-box" id="newsletter-signup">
+  <a href="#" class="modal-close close ir">x</a>
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div class="spoon ir"></div>
+    <div class="inner">
+      <h1 class="ir sign-up-to-newsletter">Sign Up To Our Newsletter</h1>
+      <div class="dotted"></div>
+      <p class="p2">We love to chat almost as much as we love tea, except for when we’re eating biscuits as you should never talk with your mouth full.  If you would like to hear from us and find out what we’re up to, be the first to find out about special offers and magical tea time prizes and occasionally get the chance to receive a free sample, then just fill out a few blanks below.</p>
+      <form action="http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php" method="post" class="validate clipper-form">
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div class="select">
+      <label for="form-title">Title:</label>
+      <select name="title" id="form-title"> *
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Miss">Miss</option>
+        <option value="Ms">Ms</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div>
+      <label for="form-first-name">First Name:</label>
+      <input type="text" name="first-name" id="form-first-name" required> *
+    </div>
+    <div>
+      <label for="form-surname">Surname:</label>
+      <input type="text" name="surname" id="form-surname" required> *
+    </div>
+    <div>
+      <label for="form-address-1">Address line 1:</label>
+      <input type="text" name="address-1" id="form-address-1" required> *
+    </div>
+    <div>
+      <label for="form-address-2">Address line 2:</label>
+      <input type="text" name="address-2" id="form-address-2" required> *
+    </div>
+    <div>
+      <label for="form-town">City:</label>
+      <input type="text" name="town" id="form-town" required> *
+    </div>
+    <div>
+      <label for="form-postcode">Postcode:</label>
+      <input type="text" name="postcode" id="form-postcode" required> *
+    </div>
+
+    <div class="select country">
+      <label for="form-country">Country:</label>
+      <select name="country" id="form-country">
+  <option value="AF">AFGHANISTAN</option>
+  <option value="AX">ÅLAND ISLANDS</option>
+  <option value="AL">ALBANIA</option>
+  <option value="DZ">ALGERIA</option>
+  <option value="AS">AMERICAN SAMOA</option>
+  <option value="AD">ANDORRA</option>
+  <option value="AO">ANGOLA</option>
+  <option value="AI">ANGUILLA</option>
+  <option value="AQ">ANTARCTICA</option>
+  <option value="AG">ANTIGUA AND BARBUDA</option>
+  <option value="AR">ARGENTINA</option>
+  <option value="AM">ARMENIA</option>
+  <option value="AW">ARUBA</option>
+  <option value="AU">AUSTRALIA</option>
+  <option value="AT">AUSTRIA</option>
+  <option value="AZ">AZERBAIJAN</option>
+  <option value="BS">BAHAMAS</option>
+  <option value="BH">BAHRAIN</option>
+  <option value="BD">BANGLADESH</option>
+  <option value="BB">BARBADOS</option>
+  <option value="BY">BELARUS</option>
+  <option value="BE">BELGIUM</option>
+  <option value="BZ">BELIZE</option>
+  <option value="BJ">BENIN</option>
+  <option value="BM">BERMUDA</option>
+  <option value="BT">BHUTAN</option>
+  <option value="BO">BOLIVIA, PLURINATIONAL STATE OF</option>
+  <option value="BQ">BONAIRE, SINT EUSTATIUS AND SABA</option>
+  <option value="BA">BOSNIA AND HERZEGOVINA</option>
+  <option value="BW">BOTSWANA</option>
+  <option value="BV">BOUVET ISLAND</option>
+  <option value="BR">BRAZIL</option>
+  <option value="IO">BRITISH INDIAN OCEAN TERRITORY</option>
+  <option value="BN">BRUNEI DARUSSALAM</option>
+  <option value="BG">BULGARIA</option>
+  <option value="BF">BURKINA FASO</option>
+  <option value="BI">BURUNDI</option>
+  <option value="KH">CAMBODIA</option>
+  <option value="CM">CAMEROON</option>
+  <option value="CA">CANADA</option>
+  <option value="CV">CAPE VERDE</option>
+  <option value="KY">CAYMAN ISLANDS</option>
+  <option value="CF">CENTRAL AFRICAN REPUBLIC</option>
+  <option value="TD">CHAD</option>
+  <option value="CL">CHILE</option>
+  <option value="CN">CHINA</option>
+  <option value="CX">CHRISTMAS ISLAND</option>
+  <option value="CC">COCOS (KEELING) ISLANDS</option>
+  <option value="CO">COLOMBIA</option>
+  <option value="KM">COMOROS</option>
+  <option value="CG">CONGO</option>
+  <option value="CD">CONGO, THE DEMOCRATIC REPUBLIC OF THE</option>
+  <option value="CK">COOK ISLANDS</option>
+  <option value="CR">COSTA RICA</option>
+  <option value="CI">CÔTE D'IVOIRE</option>
+  <option value="HR">CROATIA</option>
+  <option value="CU">CUBA</option>
+  <option value="CW">CURAÇAO</option>
+  <option value="CY">CYPRUS</option>
+  <option value="CZ">CZECH REPUBLIC</option>
+  <option value="DK">DENMARK</option>
+  <option value="DJ">DJIBOUTI</option>
+  <option value="DM">DOMINICA</option>
+  <option value="DO">DOMINICAN REPUBLIC</option>
+  <option value="EC">ECUADOR</option>
+  <option value="EG">EGYPT</option>
+  <option value="SV">EL SALVADOR</option>
+  <option value="GQ">EQUATORIAL GUINEA</option>
+  <option value="ER">ERITREA</option>
+  <option value="EE">ESTONIA</option>
+  <option value="ET">ETHIOPIA</option>
+  <option value="FK">FALKLAND ISLANDS (MALVINAS)</option>
+  <option value="FO">FAROE ISLANDS</option>
+  <option value="FJ">FIJI</option>
+  <option value="FI">FINLAND</option>
+  <option value="FR">FRANCE</option>
+  <option value="GF">FRENCH GUIANA</option>
+  <option value="PF">FRENCH POLYNESIA</option>
+  <option value="TF">FRENCH SOUTHERN TERRITORIES</option>
+  <option value="GA">GABON</option>
+  <option value="GM">GAMBIA</option>
+  <option value="GE">GEORGIA</option>
+  <option value="DE">GERMANY</option>
+  <option value="GH">GHANA</option>
+  <option value="GI">GIBRALTAR</option>
+  <option value="GR">GREECE</option>
+  <option value="GL">GREENLAND</option>
+  <option value="GD">GRENADA</option>
+  <option value="GP">GUADELOUPE</option>
+  <option value="GU">GUAM</option>
+  <option value="GT">GUATEMALA</option>
+  <option value="GG">GUERNSEY</option>
+  <option value="GN">GUINEA</option>
+  <option value="GW">GUINEA-BISSAU</option>
+  <option value="GY">GUYANA</option>
+  <option value="HT">HAITI</option>
+  <option value="HM">HEARD ISLAND AND MCDONALD ISLANDS</option>
+  <option value="VA">HOLY SEE (VATICAN CITY STATE)</option>
+  <option value="HN">HONDURAS</option>
+  <option value="HK">HONG KONG</option>
+  <option value="HU">HUNGARY</option>
+  <option value="IS">ICELAND</option>
+  <option value="IN">INDIA</option>
+  <option value="ID">INDONESIA</option>
+  <option value="IR">IRAN, ISLAMIC REPUBLIC OF</option>
+  <option value="IQ">IRAQ</option>
+  <option value="IE">IRELAND</option>
+  <option value="IM">ISLE OF MAN</option>
+  <option value="IL">ISRAEL</option>
+  <option value="IT">ITALY</option>
+  <option value="JM">JAMAICA</option>
+  <option value="JP">JAPAN</option>
+  <option value="JE">JERSEY</option>
+  <option value="JO">JORDAN</option>
+  <option value="KZ">KAZAKHSTAN</option>
+  <option value="KE">KENYA</option>
+  <option value="KI">KIRIBATI</option>
+  <option value="KP">KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</option>
+  <option value="KR">KOREA, REPUBLIC OF</option>
+  <option value="KW">KUWAIT</option>
+  <option value="KG">KYRGYZSTAN</option>
+  <option value="LA">LAO PEOPLE'S DEMOCRATIC REPUBLIC</option>
+  <option value="LV">LATVIA</option>
+  <option value="LB">LEBANON</option>
+  <option value="LS">LESOTHO</option>
+  <option value="LR">LIBERIA</option>
+  <option value="LY">LIBYA</option>
+  <option value="LI">LIECHTENSTEIN</option>
+  <option value="LT">LITHUANIA</option>
+  <option value="LU">LUXEMBOURG</option>
+  <option value="MO">MACAO</option>
+  <option value="MK">MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF</option>
+  <option value="MG">MADAGASCAR</option>
+  <option value="MW">MALAWI</option>
+  <option value="MY">MALAYSIA</option>
+  <option value="MV">MALDIVES</option>
+  <option value="ML">MALI</option>
+  <option value="MT">MALTA</option>
+  <option value="MH">MARSHALL ISLANDS</option>
+  <option value="MQ">MARTINIQUE</option>
+  <option value="MR">MAURITANIA</option>
+  <option value="MU">MAURITIUS</option>
+  <option value="YT">MAYOTTE</option>
+  <option value="MX">MEXICO</option>
+  <option value="FM">MICRONESIA, FEDERATED STATES OF</option>
+  <option value="MD">MOLDOVA, REPUBLIC OF</option>
+  <option value="MC">MONACO</option>
+  <option value="MN">MONGOLIA</option>
+  <option value="ME">MONTENEGRO</option>
+  <option value="MS">MONTSERRAT</option>
+  <option value="MA">MOROCCO</option>
+  <option value="MZ">MOZAMBIQUE</option>
+  <option value="MM">MYANMAR</option>
+  <option value="NA">NAMIBIA</option>
+  <option value="NR">NAURU</option>
+  <option value="NP">NEPAL</option>
+  <option value="NL">NETHERLANDS</option>
+  <option value="NC">NEW CALEDONIA</option>
+  <option value="NZ">NEW ZEALAND</option>
+  <option value="NI">NICARAGUA</option>
+  <option value="NE">NIGER</option>
+  <option value="NG">NIGERIA</option>
+  <option value="NU">NIUE</option>
+  <option value="NF">NORFOLK ISLAND</option>
+  <option value="MP">NORTHERN MARIANA ISLANDS</option>
+  <option value="NO">NORWAY</option>
+  <option value="OM">OMAN</option>
+  <option value="PK">PAKISTAN</option>
+  <option value="PW">PALAU</option>
+  <option value="PS">PALESTINE, STATE OF</option>
+  <option value="PA">PANAMA</option>
+  <option value="PG">PAPUA NEW GUINEA</option>
+  <option value="PY">PARAGUAY</option>
+  <option value="PE">PERU</option>
+  <option value="PH">PHILIPPINES</option>
+  <option value="PN">PITCAIRN</option>
+  <option value="PL">POLAND</option>
+  <option value="PT">PORTUGAL</option>
+  <option value="PR">PUERTO RICO</option>
+  <option value="QA">QATAR</option>
+  <option value="RE">RÉUNION</option>
+  <option value="RO">ROMANIA</option>
+  <option value="RU">RUSSIAN FEDERATION</option>
+  <option value="RW">RWANDA</option>
+  <option value="BL">SAINT BARTHÉLEMY</option>
+  <option value="SH">SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA</option>
+  <option value="KN">SAINT KITTS AND NEVIS</option>
+  <option value="LC">SAINT LUCIA</option>
+  <option value="MF">SAINT MARTIN (FRENCH PART)</option>
+  <option value="PM">SAINT PIERRE AND MIQUELON</option>
+  <option value="VC">SAINT VINCENT AND THE GRENADINES</option>
+  <option value="WS">SAMOA</option>
+  <option value="SM">SAN MARINO</option>
+  <option value="ST">SAO TOME AND PRINCIPE</option>
+  <option value="SA">SAUDI ARABIA</option>
+  <option value="SN">SENEGAL</option>
+  <option value="RS">SERBIA</option>
+  <option value="SC">SEYCHELLES</option>
+  <option value="SL">SIERRA LEONE</option>
+  <option value="SG">SINGAPORE</option>
+  <option value="SX">SINT MAARTEN (DUTCH PART)</option>
+  <option value="SK">SLOVAKIA</option>
+  <option value="SI">SLOVENIA</option>
+  <option value="SB">SOLOMON ISLANDS</option>
+  <option value="SO">SOMALIA</option>
+  <option value="ZA">SOUTH AFRICA</option>
+  <option value="GS">SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</option>
+  <option value="SS">SOUTH SUDAN</option>
+  <option value="ES">SPAIN</option>
+  <option value="LK">SRI LANKA</option>
+  <option value="SD">SUDAN</option>
+  <option value="SR">SURINAME</option>
+  <option value="SJ">SVALBARD AND JAN MAYEN</option>
+  <option value="SZ">SWAZILAND</option>
+  <option value="SE">SWEDEN</option>
+  <option value="CH">SWITZERLAND</option>
+  <option value="SY">SYRIAN ARAB REPUBLIC</option>
+  <option value="TW">TAIWAN, PROVINCE OF CHINA</option>
+  <option value="TJ">TAJIKISTAN</option>
+  <option value="TZ">TANZANIA, UNITED REPUBLIC OF</option>
+  <option value="TH">THAILAND</option>
+  <option value="TL">TIMOR-LESTE</option>
+  <option value="TG">TOGO</option>
+  <option value="TK">TOKELAU</option>
+  <option value="TO">TONGA</option>
+  <option value="TT">TRINIDAD AND TOBAGO</option>
+  <option value="TN">TUNISIA</option>
+  <option value="TR">TURKEY</option>
+  <option value="TM">TURKMENISTAN</option>
+  <option value="TC">TURKS AND CAICOS ISLANDS</option>
+  <option value="TV">TUVALU</option>
+  <option value="UG">UGANDA</option>
+  <option value="UA">UKRAINE</option>
+  <option value="AE">UNITED ARAB EMIRATES</option>
+  <option value="GB" selected="selected">UNITED KINGDOM</option>
+  <option value="US">UNITED STATES</option>
+  <option value="UM">UNITED STATES MINOR OUTLYING ISLANDS</option>
+  <option value="UY">URUGUAY</option>
+  <option value="UZ">UZBEKISTAN</option>
+  <option value="VU">VANUATU</option>
+  <option value="VE">VENEZUELA, BOLIVARIAN REPUBLIC OF</option>
+  <option value="VN">VIET NAM</option>
+  <option value="VG">VIRGIN ISLANDS, BRITISH</option>
+  <option value="VI">VIRGIN ISLANDS, U.S.</option>
+  <option value="WF">WALLIS AND FUTUNA</option>
+  <option value="EH">WESTERN SAHARA</option>
+  <option value="YE">YEMEN</option>
+  <option value="ZM">ZAMBIA</option>
+  <option value="ZW">ZIMBABWE</option>
+</select>
+    </div>
+    <div>
+      <label for="form-email">Email:</label>
+      <input type="email" name="email" id="form-email" required> *
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" name="terms" id="form-terms" value="1" required checked>
+      <label for="form-terms">
+        Please tick this box if you agree to our terms and conditions <br/><a href="/t-and-c/" class="external">Click here</a> to read our terms & conditons
+      </label>
+    </div>
+    <div class="checkbox">
+      <input type="hidden" name="optin" value="0">
+      <input type="checkbox" name="optin" id="form-optin" value="1">
+      <label for="form-optin">
+        Please click here to hear more from Clipper
+      </label>
+    </div>
+    <div class="submit">
+      <input class="submit-btn" type="image" src="http://www.clipper-teas.com/content/themes/clipper_teas/images/btns/submit.png">
+    </div>
+    <input type="hidden" name="action" value="newsletter_sign_up">
+    <div class="clouds"></div>
+    <div class="cloud"></div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</form>
+    </div>
+    <div class="inner visuallyhidden">
+      <h1 class="ir thanks-for-signing-up">Thanks for signing up</h1>
+      <div class="dotted"></div>
+      <p>We hope you enjoy reading our monthly newsletters, full of exciting news, gossip &amp; the chance to win lots of brilliant prizes.</p>
+      <div class="dotted">
+        <div class="clouds"></div>
+        <div class="cloud"></div>
+      </div>
+      <a href="#" class="modal-close ir browse-on">Browse On</a>
+    </div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</div>
+<div class="modal-box" id="newsletter-unsubscribe">
+  <a href="#" class="modal-close close ir">x</a>
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div class="spoon ir"></div>
+    <div class="inner">
+      <h1 class="ir unsubscribe-init">Unsubscribe</h1>
+      <div class="dotted"></div>
+      <p class="p2">If you do not wish to receive our regular news and offers please enter your email address below to unsubscribe. </p>
+      <form action="http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php" method="post" class="validate clipper-form">
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div>
+      <label for="form-email">Email:</label>
+      <input type="email" name="email" id="form-email" required> *
+    </div>
+    <div class="submit">
+      <input class="submit-btn" type="image" src="http://www.clipper-teas.com/content/themes/clipper_teas/images/btns/submit.png">
+    </div>
+    <input type="hidden" name="action" value="newsletter_unsubscribe">
+    <div class="clouds"></div>
+    <div class="cloud"></div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</form>
+    </div>
+    <div class="inner visuallyhidden">
+      <h1 class="ir unsubscribed-init">Thanks for signing up</h1>
+      <div class="dotted"></div>
+      <h2 class="h3">We’ll miss you!</h2>
+      <p class="p2">We have recieved your request and will remove you from your selected lists. If you ever fancy another cuppa, you're always welcome.</p>
+      <div class="dotted">
+        <div class="clouds"></div>
+        <div class="cloud"></div>
+      </div>
+      <a href="#" class="modal-close ir browse-on">Browse On</a>
+    </div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</div>
+<div class="modal-box game-registration" id="game-registration">
+  <a href="#" class="modal-close close ir">x</a>
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div class="spoon ir"></div>
+    <div class="inner">
+      <h1 class="ir already-registered">Already registered?</h1>
+      <div class="dotted"></div>
+      <p class="p2">Please log in here (your email)*</p>
+      <form action="http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php" method="post" class="sign-in validate clipper-form">
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div>
+      <label for="form-email">Email:</label>
+      <input type="email" name="email" id="form-email" required> *
+    </div>
+    <div class="checkbox login-checkbox">
+      <input type="hidden" name="partner" value="0">
+      <input type="checkbox" name="partner" id="form-partner" value="1" checked="checked">
+      <label for="form-partner">
+        Tick if you are happy to hear from this month's prize partner
+      </label>
+    </div>
+    <div class="submit">
+      <input class="login-btn" type="image" src="http://www.clipper-teas.com/content/themes/clipper_teas/images/btns/login.png">
+    </div>
+    <input type="hidden" name="action" value="find_the_teapot_sign_in">
+  </div>
+  <div class="ft">&nbsp;</div>
+</form>
+      <h2 class="h3">Or Register Below:</h2>
+      <form action="http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php" method="post" class="validate clipper-form">
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div>
+      <label for="form-first-name">First Name:</label>
+      <input type="text" name="first-name" id="form-first-name" required> *
+    </div>
+    <div>
+      <label for="form-surname">Surname:</label>
+      <input type="text" name="surname" id="form-surname" required> *
+    </div>
+    <div>
+      <label for="form-email">Email:</label>
+      <input type="email" name="email" id="form-email" required> *
+    </div>
+    <div>
+      <label for="form-address-1">Address:</label>
+      <input type="text" name="address-1" id="form-address-1" required> *
+    </div>
+    <div>
+      <label for="form-address-2">&nbsp;</label>
+      <input type="text" name="address-2" id="form-address-2" required> *
+    </div>
+    <div>
+      <label for="form-postcode">Postcode:</label>
+      <input type="text" name="postcode" id="form-postcode" required> *
+    </div>
+    <div>
+      <label for="form-telephone">Tel/Mobile:</label>
+      <input type="text" name="telephone" id="form-telephone" pattern=".{10,}" title="Please enter a valid phone number" required> *
+    </div>
+    <div class="divider"></div>
+    <div class="checkbox">
+      <input type="hidden" name="optin" value="0">
+      <input type="checkbox" name="optin" id="form-optin" value="1" checked="checked">
+      <label for="form-optin">
+        Tick if you don’t mind us contacting you again (We never share your details with anyone else)
+      </label>
+    </div>
+    <div class="checkbox">
+      <input type="hidden" name="partner" value="0">
+      <input type="checkbox" name="partner" id="form-partner" value="1" checked="checked">
+      <label for="form-partner">
+        Tick if you are happy to hear from this month's prize partner
+      </label>
+    </div>
+    <div class="checkbox">
+      <input type="hidden" name="terms" value="0">
+      <input type="checkbox" name="terms" id="form-terms" value="1" required>
+      <label for="form-terms">
+        Tick this box if you are over 18 to be eligible to play and accept the <a href="/carousel-game-terms-conditions/" class="external">terms and conditions</a> *
+      </label>
+    </div>
+    <div class="divider"></div>
+    <div class="submit">
+      <input class="submit-btn" type="image" src="http://www.clipper-teas.com/content/themes/clipper_teas/images/btns/register.png">
+    </div>
+    <div class="clouds"></div>
+    <div class="cloud"></div>
+    <input type="hidden" name="action" value="find_the_teapot_register">
+  </div>
+  <div class="ft">&nbsp;</div>
+</form>
+    </div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</div>
+<div class="modal-box tell-a-friend" id="tell-a-friend">
+  <a href="#" class="modal-close close ir">x</a>
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div class="spoon ir"></div>
+    <div class="inner">
+      <h1 class="ir share-the-magic">Share The Magic</h1>
+      <div class="dotted"></div>
+      <p class="p2">We tell everybody how much we love our tea but we are a little bit biased and it would probably be better coming from you!  If you know somebody who needs to discover how good Clipper Tea tastes then please fill out the postcard below and be sure to let them know. </p>
+      <form action="http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php" method="post" class="validate clipper-form">
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div>
+      <label for="form-name">Your Name:</label>
+      <input type="text" name="name" id="form-name" required> *
+    </div>
+    <div>
+      <label for="form-email">Your Email:</label>
+      <input type="email" name="email" id="form-email" required> *
+    </div>
+    <div class="friend-input">
+      <label for="form-friend-email-01">Friend's Email:</label>
+      <div><input type="email" name="friend-email[]" id="form-friend-email" required> *</div>
+    </div>
+    <div class="add-remove clearfix">
+      <a href="#" class="minus ir">-</a>
+      <a href="#" class="plus ir">+</a>
+      <p class="p2">Add or remove friends</p>
+    </div>
+    <div>
+      <label for="form-message">Message:</label>
+      <textarea name="message" id="form-message" cols="30" rows="10"></textarea> *
+    </div>
+    <div class="divider"></div>
+    <div class="checkbox">
+      <input type="hidden" name="copy" value="0">
+      <input type="checkbox" name="copy" id="form-copy" value="1">
+      <label for="form-copy">
+        Send a copy to your email
+      </label>
+    </div>
+    <div class="divider"></div>
+    <div class="submit">
+                <input type="hidden" name="url" value="http://www.clipper-teas.com/content/themes/clipper_teas/css/ui/smoothness/jquery-ui-1.10.4.custom.min.css?name=jquery-ui-1.10.4.custom.min.css&category_name=content%2Fthemes%2Fclipper_teas%2Fcss%2Fui%2Fsmoothness" />
+      <input class="submit-btn" type="image" src="http://www.clipper-teas.com/content/themes/clipper_teas/images/btns/submit.png">
+    </div>
+    <input type="hidden" name="action" value="tell_a_friend">
+    <div class="clouds"></div>
+    <div class="cloud"></div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</form>
+    </div>
+    <div class="inner visuallyhidden">
+      <h1 class="ir thanks-for-spreading">Thanks for spreading the word</h1>
+      <div class="dotted"></div>
+      <p>Aren’t you just a fabulous friend?! Thanks for sending some of our tea to your lucky pal.</p>
+      <div class="dotted">
+        <div class="clouds"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</div>
+<div class="modal-box" id="onpack-promotion">
+  <a href="#" class="modal-close close ir">x</a>
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div class="spoon ir"></div>
+    <div class="inner">
+      <h1 class="ir enter-lucky-code">Enter Your Lucky Code</h1>
+      <div class="dotted"></div>
+      <p class="p2">Enter your details and lucky code from one of our promotional packs below to find out instantly if you've won one of our magical tea time prizes. Good luck!</p>
+      <div class="form-hd">&nbsp;</div>
+      <form action="http://www.clipper-teas.com/wp/wp-admin/admin-ajax.php" id="onpack-promotion-enter" class="onpack-promotion validate clipper-form" method="post">
+  <div class="select">
+    <label for="form-title">Title:</label>
+    <select name="title" id="form-title"> <span class="required">*</span>
+      <option value="Mr">Mr</option>
+      <option value="Mrs">Mrs</option>
+      <option value="Miss">Miss</option>
+      <option value="Ms">Ms</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div>
+    <label for="form-fname">First Name:</label>
+    <input type="text" name="fname" id="form-fname" required> <span class="required">*</span>
+  </div>
+  <div>
+    <label for="form-lname">Last Name:</label>
+    <input type="text" name="lname" id="form-lname" required> <span class="required">*</span>
+  </div>
+  <div>
+    <label for="form-email">Email:</label>
+    <input type="email" name="email" id="form-email" required> <span class="required">*</span>
+  </div>
+  <div id="lucky-code-div">
+    <div id="lucky-code-error"></div>
+    <label for="form-code">Lucky Code:</label>
+    <input type="text" name="code[]" id="form-code_1" class="lucky-code" required maxlength="1">
+    <input type="text" name="code[]" id="form-code_2" class="lucky-code" required maxlength="1">
+    <input type="text" name="code[]" id="form-code_3" class="lucky-code" required maxlength="1">
+    <input type="text" name="code[]" id="form-code_4" class="lucky-code" required maxlength="1">
+    <input type="text" name="code[]" id="form-code_5" class="lucky-code" required maxlength="1">
+    <input type="text" name="code[]" id="form-code_6" class="lucky-code" required maxlength="1">
+    <input type="text" name="code[]" id="form-code_7" class="lucky-code" required maxlength="1">
+    <input type="text" name="code[]" id="form-code_8" class="lucky-code" required maxlength="1"> <span class="required">*</span>
+  </div>
+  <div class="checkbox">
+    <div class="divider"></div>
+    <input type="checkbox" name="terms" id="form-terms" value="1" required>
+    <label for="form-terms">
+      Please tick this box if you agree to our<br /><a href="/magical/terms-conditions/" class="external">terms and conditions</a>
+    </label>
+  </div>
+  <div class="checkbox">
+    <input type="hidden" name="optin" value="0">
+    <input type="checkbox" name="optin" id="form-optin" value="1" checked>
+    <label for="form-optin">
+      Tick if you don't mind us contacting you again (we never share your details with anyone else)
+    </label>
+  </div>
+  <div class="checkbox">
+    <input type="hidden" name="optin-hotel" value="0">
+    <input type="checkbox" name="optin-hotel" id="form-optin-hotel" value="1" checked>
+    <label for="form-optin-hotel">
+      Tick if you're happy to hear from our friends at The Pop-Up Hotel
+    </label>
+  </div>
+  <div class="optin-town-city">
+    <input type="text" name="town-city" value="" />
+  </div>
+  <div class="submit">
+    <div class="divider"></div>
+    <input type="hidden" name="action" value="on_pack_promotion">
+    <input type="submit" class="submit-btn" id="redeem-submit" value="Submit">
+    <div id="redeem-loading-div"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/ajax-loader-green.gif" /></div>
+  </div>
+  <p class="onpack-help">If you’re having trouble entering your code, please call 0845 026 4559 and we will do our best to help you!</p>
+</form>      <div class="form-ft">&nbsp;</div>
+      <div class="cloud1">&nbsp;</div>
+      <div class="cloud2">&nbsp;</div>
+    </div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</div><div class="modal-box" id="twelve-days-competition-popup">
+	<a href="#" class="modal-close close ir">x</a>
+	<div class="hd">&nbsp;</div>
+	<div class="bd">
+		<div class="presents ir"></div>
+		<div class="holly ir"></div>
+		<div class="inner">
+			<h1 class="ir enter-lucky-code">To enter the free prize draw just pop in your email address...</h1>
+			<p class="sub">It's that simple!</p>
+			<div class="dotted"></div>
+			<div class="form-hd">&nbsp;</div>
+	  		
+	  		<form action="" id="twelve-days-competition-enter" class="validate clipper-form" method="post">
+	  		  <div class="form-contents">
+		  		<div>
+				    <label for="form-email">Email Address:</label>
+				    <input type="email" name="email" id="form-email" required>
+				  </div>
+				  <div class="checkbox">
+				    <input type="checkbox" name="optin" id="form-optin-clipper" value="1" checked>
+				    <label for="form-optin-clipper">
+				      Tick if you don't mind us contacting you again (we never share your details with anyone else)
+				    </label>
+				  </div>
+				  <div class="checkbox">
+				    <input type="checkbox" name="optin-partners" id="form-optin-partners" value="1" checked>
+				    <label for="form-optin-partners">
+				      Tick if you are happy to hear from our lovely prize partners
+				    </label>
+				  </div>
+				  <div class="checkbox">
+				    <input type="checkbox" name="terms" id="form-age-and-terms" value="1" required>
+				    <label for="form-age-and-terms">
+				      Tick this box if you are over 18 to be eligible to play and accept the <a href="/12-days-of-clipper-christmas-terms-and-conditions/" class="external">terms and conditions</a> *
+				    </label>
+				  </div>
+				  <div class="submit">
+				    <input type="hidden" name="action" value="twelve_days_competition">
+				    <input type="submit" class="submit-btn" id="enter-submit" value="">
+                      <div id="thepotfield">
+                          <input type="text" name="thepotfield" value="" alt="This field should be left empty" />
+                      </div>
+				    <div id="redeem-loading-div"><img src="http://www.clipper-teas.com/content/themes/clipper_teas/images/win_things/12-days-christmas/ajax-loader.gif" /></div>
+				  </div>
+			  </div>
+			  
+			  <div class="success">
+			  	<div class="thank-you ir"></div>
+			  	<a href="/win-things/game-competition/" class="carousel-button"></a>
+			  </div>
+
+			  <div class="duplicate">
+			  	<div class="again-tomorrow ir"></div>
+			  	<a href="/win-things/game-competition/" class="carousel-button"></a>
+			  </div>
+			</form>
+	  		
+			<div class="form-ft">&nbsp;</div>
+			
+	  		<div class="dotted"></div>
+			<h2>Share with your friends for another chance to win!</h2>
+			<p class="sub">Tis the season of goodwill so if you share with a friend, we will enter you into the prize draw to win today's lovely gift again!</p>
+			<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.clipper-teas.com%2Fwin-things%2F12-days-of-clipper-christmas%2F" target="_blank" class="social-button" id="twelve-days-share-on-twitter">Share on Twitter</a>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.clipper-teas.com%2Fwin-things%2F12-days-of-clipper-christmas%2F" target="_blank" class="social-button" id="twelve-days-share-on-facebook">Share on Facebook</a>
+			<a href="#" class="social-button" id="twelve-days-email-a-friend-button">Email friends</a>
+		</div>
+	</div>
+	<div class="ft">&nbsp;</div>
+</div>
+
+<div class="modal-box tell-a-friend-twelve-days-competition" id="tell-a-friend-twelve-days-competition-popup">
+  <a href="#" class="modal-close close ir">x</a>
+  <div class="hd">&nbsp;</div>
+  <div class="bd">
+    <div class="presents ir"></div>
+    <div class="inner tell-a-friend-content">
+      <h1 class="ir">Share The Magic</h1>
+      <div class="dotted"></div>
+      
+      <div class="form-hd">&nbsp;</div>
+      
+      <form action="" method="post" class="validate clipper-form">
+	    <div>
+	      <label for="form-name">Your Name:</label>
+	      <input type="text" name="name" id="form-name" required> *
+	    </div>
+	    <div>
+	      <label for="form-email">Your Email:</label>
+	      <input type="email" name="email" id="form-email" required> *
+	    </div>
+	    <div class="friend-input">
+	      <label for="form-friend-email-01">Friend's Email:</label>
+	      <input type="email" name="friend-email-1" id="form-friend-email-1" required> *
+	    </div>
+	    <div class="add-remove clearfix">
+	      <a href="#" class="minus ir">-</a>
+	      <a href="#" class="plus ir">+</a>
+	      <p class="p2">Add or remove friends</p>
+	    </div>
+	    <div>
+	      <label for="form-message">Message:</label>
+	      <textarea name="message" id="form-message" cols="30" rows="10" required></textarea> *
+	    </div>
+	    <div class="divider"></div>
+	    <div class="checkbox">
+	      <input type="checkbox" name="copy" id="form-copy" value="1">
+	      <label for="form-copy">
+	        Send a copy to your email
+	      </label>
+	    </div>
+	    <div class="divider"></div>
+	    <div class="submit">
+	      <input type="submit" class="submit-btn" id="enter-submit" value="">
+
+            <div id="thepotfield">
+                <input type="text" name="thepotfield" value="" alt="This field should be left empty" />
+            </div>
+	    </div>
+	    <input type="hidden" name="action" value="twelve_days_email_a_friend">
+	 </form>
+    
+    <div class="form-ft">&nbsp;</div>
+      
+    </div>
+    <div class="inner visuallyhidden tell-a-friend-success">
+      <h1 class="ir">Thanks for <br/>spreading the word</h1>
+      <div class="dotted"></div>
+      <p>Aren’t you just a fabulous friend?!</p>
+      <div class="dotted"></div>
+      <a href="/win-things/game-competition/" class="carousel-button"></a>
+    </div>
+  </div>
+  <div class="ft">&nbsp;</div>
+</div>    </div>
+      <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-4.newrelic.com","licenseKey":"1cd29058ab","applicationID":"2777816","transactionName":"YFIGYRMHWhVWARFRWlkYJVYVD1sIGFZVDA==","queueTime":0,"applicationTime":53,"ttGuid":"","agentToken":"","atts":"TBURF1sdSUoVA0cCTkpK","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-411.min.js"}</script></body>
+</html>
