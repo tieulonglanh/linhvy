@@ -85,7 +85,7 @@
 <div id="page_website">
 <div id="page_content">
 <div class="div_banner">
-    <img src="<?php echo DOMAIN; ?>images/banner.jpg" alt="banner" width="980" />
+    <embed src="<?php echo DOMAIN; ?>images/banner.swf" alt="banner" width="100%" height="387px;" />
 	<?php if(!empty($layout_title)){ ?>
 		<h1 style="text-indent: -9999px; display: none;"><?php echo $layout_title; ?></h1>
 	<?php }else{ ?>
@@ -247,7 +247,7 @@
 
     <div class="div_box">
         <div class="div_box_header">
-            <h3>Quảng cáo</h3>
+            <h3>Phản hồi khách hàng</h3>
         </div>
         <div class="div_box_content" style="padding-bottom:10px;">
             <?php $adv = $this->requestAction('Component/get_adv');

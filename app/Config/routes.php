@@ -35,9 +35,10 @@
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
+Router::connect('/', array('controller' => 'Product', 'action' => 'index'));
 Router::connect('/gioi-thieu/*', array('controller' => 'Post', 'action' => 'detail', 1));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
-Router::connect('/', array('controller' => 'Product', 'action' => 'index'));
+
 Router::connect('/danh-muc-san-pham/*', array('controller' => 'Product', 'action' => 'listProduct'));
 Router::connect('/chi-tiet-san-pham/*', array('controller' => 'Product', 'action' => 'detail'));
 Router::connect('/album-anh', array('controller' => 'gallery', 'action' => 'index'));
