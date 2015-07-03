@@ -36001,3 +36001,6 @@
 2015-07-02 21:34:42 Error: [MissingControllerException] Controller class ImagesController could not be found.
 #0 E:\wamp\www\DongVD\linhvyshop\linhvy\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-07-03 05:58:20 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 D:\wamp\www\linhvyshop.com\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
